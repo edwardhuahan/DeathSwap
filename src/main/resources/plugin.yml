@@ -1,0 +1,11 @@
+name: DeathSwap
+version: 1.16.1
+main: io.github.edwardhuahan.deathswap.DeathSwap
+
+commands:
+  startswap:
+    description: Begin the game
+    usage: /startswap
+  stopswap:
+    description: Stop the game
+    usage: /stopswap
