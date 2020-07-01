@@ -7,16 +7,16 @@ import org.bukkit.command.CommandSender;
 
 public class CommandStopSwap implements CommandExecutor {
 
-    private final DeathSwapPlugin plugin;
+    private final DeathSwap plugin;
 
-    public CommandStopSwap(DeathSwapPlugin plugin) {
+    public CommandStopSwap(DeathSwap plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (command.getName().equalsIgnoreCase("startswap")) {
-            plugin.getServer().broadcastMessage(ChatColor.RED + "Starting deathswap");
+        if (command.getName().equalsIgnoreCase("stopswap")) {
+            plugin.getServer().broadcastMessage(ChatColor.BLUE + "Stopping deathswap...");
 
             plugin.getGame().stopGame();
         }

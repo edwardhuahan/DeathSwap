@@ -1,6 +1,5 @@
 package io.github.edwardhuahan.deathswap;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
@@ -10,9 +9,9 @@ import org.bukkit.entity.Player;
 
 public class CommandStartSwap implements CommandExecutor {
 
-    private final DeathSwapPlugin plugin;
+    private final DeathSwap plugin;
 
-    public CommandStartSwap(DeathSwapPlugin plugin) {
+    public CommandStartSwap(DeathSwap plugin) {
         this.plugin = plugin;
     }
 
@@ -25,7 +24,7 @@ public class CommandStartSwap implements CommandExecutor {
             players[0] = (Player) commandSender;
             players[1] = server.getPlayer(args[0]);
 
-            server.broadcastMessage(ChatColor.RED + "Starting deathswap");
+            server.broadcastMessage(ChatColor.BLUE + "Starting deathswap");
 
             plugin.getGame().startGame(players);
         }

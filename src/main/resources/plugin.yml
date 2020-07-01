@@ -5,7 +5,7 @@ main: io.github.edwardhuahan.deathswap.DeathSwap
 commands:
   startswap:
     description: Begin the game
-    usage: /startswap
+    usage: /startswap Playername
   stopswap:
     description: Stop the game
     usage: /stopswap

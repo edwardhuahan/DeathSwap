@@ -2,9 +2,9 @@ package io.github.edwardhuahan.deathswap;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class DeathSwapPlugin extends JavaPlugin {
+public class DeathSwap extends JavaPlugin {
 
-    private DeathSwapPlugin plugin;
+    private DeathSwap plugin;
     private Game mainRunner;
 
     public void onEnable() {

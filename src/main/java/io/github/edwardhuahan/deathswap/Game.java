@@ -15,9 +15,11 @@ public class Game {
     private static int warntime;
 
     private static boolean running;
+    private static boolean firstRun;
 
     public Game(JavaPlugin plugin) {
         this.plugin = plugin;
+        firstRun = true;
     }
 
     public void startGame(Player[] players) {
@@ -27,26 +29,30 @@ public class Game {
         delay = 300;
         running = true;
 
-        new BukkitRunnable() {
+        if (firstRun) {
+            new BukkitRunnable() {
 
-            @Override
-            public void run() {
-                timer++;
+                @Override
+                public void run() {
+                    timer++;
 
-                if (running) {
-                    if ((delay-timer)<=warntime) {
-                        plugin.getServer().broadcastMessage(ChatColor.RED + "Swapping in " + (delay-timer) + "seconds");
+                    if (running) {
+                        if ((delay-timer)<=warntime) {
+                            plugin.getServer().broadcastMessage(ChatColor.BLUE + "Swapping in " + (delay-timer) + " seconds");
+                        }
+                        if (delay-timer<=0) {
+                            Location[] locations = {players[0].getLocation(), players[1].getLocation()};
+
+                            timer = 0;
+                            teleport(players, locations);
+
+                        }
                     }
-                    if (delay-timer<=0) {
-                        Location[] locations = {players[0].getLocation(), players[1].getLocation()};
 
-                        teleport(players, locations);
-
-                    }
                 }
-
-            }
-        }.runTaskTimerAsynchronously(plugin, 0, 20);
+            }.runTaskTimerAsynchronously(plugin, 0, 20);
+            firstRun = false;
+        }
     }
 
     public void stopGame() {
