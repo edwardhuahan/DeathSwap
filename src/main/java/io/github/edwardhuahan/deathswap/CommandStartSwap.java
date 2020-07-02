@@ -7,6 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+
 public class CommandStartSwap implements CommandExecutor {
 
     private final DeathSwap plugin;
@@ -20,15 +22,20 @@ public class CommandStartSwap implements CommandExecutor {
         // Allow use with another player
         if (commandSender instanceof Player && command.getName().equalsIgnoreCase("startswap")) {
             Server server = plugin.getServer();
-            Player[] players = new Player[2];
-            players[0] = (Player) commandSender;
-            players[1] = server.getPlayer(args[0]);
 
-            players[0].getInventory().clear();
-            players[1].getInventory().clear();
+            ArrayList<Player> players = new ArrayList<Player>();
+            players.add((Player) commandSender);
+            for (int i = 1; i < args.length; i++) {
+                players.add(server.getPlayer(args[i-1]));
+            }
 
-            players[0].teleport(RandomLocation.getRandomLocation(players[0]));
-            players[1].teleport(RandomLocation.getRandomLocation(players[1]));
+            for (Player p : players) {
+                p.getInventory().clear();
+                p.teleport(RandomLocation.getRandomLocation(p));
+                p.setHealth(20);
+                p.setFoodLevel(20);
+            }
+
 
             server.broadcastMessage(ChatColor.BLUE + "Starting deathswap");
 

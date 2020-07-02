@@ -12,6 +12,7 @@ public class DeathSwap extends JavaPlugin {
         mainRunner = new Game(plugin);
         this.getCommand("startswap").setExecutor(new CommandStartSwap(plugin));
         this.getCommand("stopswap").setExecutor(new CommandStopSwap(plugin));
+        this.getServer().getPluginManager().registerEvents(new DeathListener(mainRunner), this);
         getLogger().info("Deathswap is working");
     }
 
