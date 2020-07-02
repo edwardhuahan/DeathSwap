@@ -24,6 +24,12 @@ public class CommandStartSwap implements CommandExecutor {
             players[0] = (Player) commandSender;
             players[1] = server.getPlayer(args[0]);
 
+            players[0].getInventory().clear();
+            players[1].getInventory().clear();
+
+            players[0].teleport(RandomLocation.getRandomLocation(players[0]));
+            players[1].teleport(RandomLocation.getRandomLocation(players[1]));
+
             server.broadcastMessage(ChatColor.BLUE + "Starting deathswap");
 
             plugin.getGame().startGame(players);

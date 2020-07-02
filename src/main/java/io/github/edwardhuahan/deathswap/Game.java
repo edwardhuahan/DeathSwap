@@ -57,7 +57,6 @@ public class Game {
 
     public void stopGame() {
         running = false;
-        plugin.getServer().broadcastMessage("Stopped");
     }
 
     public void teleport(Player[] players, Location[] locs){
