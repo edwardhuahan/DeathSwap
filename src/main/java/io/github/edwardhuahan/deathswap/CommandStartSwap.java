@@ -25,8 +25,8 @@ public class CommandStartSwap implements CommandExecutor {
 
             ArrayList<Player> players = new ArrayList<Player>();
             players.add((Player) commandSender);
-            for (int i = 1; i < args.length; i++) {
-                players.add(server.getPlayer(args[i-1]));
+            for (int i = 0; i < args.length; i++) {
+                players.add(server.getPlayer(args[i]));
             }
 
             for (Player p : players) {
@@ -35,8 +35,6 @@ public class CommandStartSwap implements CommandExecutor {
                 p.setHealth(20);
                 p.setFoodLevel(20);
             }
-
-
             server.broadcastMessage(ChatColor.BLUE + "Starting deathswap");
 
             plugin.getGame().startGame(players);

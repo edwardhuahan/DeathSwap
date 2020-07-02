@@ -41,7 +41,6 @@ public class Game {
         warntime = 10;
         delay = 300 + rand.nextInt(delayRange*2)-delayRange;
         running = true;
-        players = null;
     }
 
     public void startGame(ArrayList<Player> players) {
@@ -73,8 +72,8 @@ public class Game {
                             locations.add(p.getLocation());
                         }
 
-                        reset();
                         teleport(players, locations);
+                        reset();
                     }
                 }
             }
@@ -85,6 +84,7 @@ public class Game {
     public void stopGame() {
         reset();
         running = false;
+        players.clear();
     }
 
     private void teleport(ArrayList<Player> players, ArrayList<Location> locs){
@@ -100,11 +100,11 @@ public class Game {
                 }
             }
         }.runTaskLater(plugin, 1);
-    }
+        }
 
-    public void removePlayer(Player player) {
-        if (players != null) {
-            players.remove(player);
+        public void removePlayer(Player player) {
+            if (players != null) {
+                players.remove(player);
         }
     }
 

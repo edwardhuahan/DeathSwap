@@ -3,7 +3,6 @@ package io.github.edwardhuahan.deathswap;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 
 public class DeathListener implements Listener {
 
